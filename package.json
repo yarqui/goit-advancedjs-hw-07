@@ -1,7 +1,8 @@
 {
-  "name": "typescript-homework-module-3",
+  "name": "goit-advancedjs-hw-07",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",

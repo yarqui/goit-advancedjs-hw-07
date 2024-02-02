@@ -1,5 +1,9 @@
-# Завдання 1
-Клас Student, який містить три властивості: name, age та grade. Замість того, щоб оголошувати ці властивості в тілі класу, потім у конструкторі, і нарешті надавати їм значення, напишіть скорочену ініціалізацію.
+# Task 1
+
+A Student class that contains three properties: name, age, and grade.
+Instead of declaring these properties in the body of the class, then in the constructor, and finally assigning them values,
+write a shortened initialization.
+
 ```ts
 class Student {
   public name: string;
@@ -13,22 +17,23 @@ class Student {
   }
 }
 ```
-# Завдання 2
-Ваше завдання полягатиме у створенні двох класів – Employee та Manager.
 
-Клас Employee повинен включати:
+# Task 2
 
-властивість name, яка буде доступна всім.
-властивість department, яка буде доступна лише всередині класу Employee.
-salary, яке буде доступне лише всередині класу Employee та його підкласів.
+Your task is to create two classes - Employee and Manager.
 
+The Employee class must include:
 
-Клас Manager повинен бути підклас класу Employee
+the name property, which will be available to everyone.
+the department property, which will be available only within the Employee class.
+salary, which will be available only within the Employee class and its subclasses.
 
-Необхідно реалізувати в класі Manager конструктор, який викликатиме конструктор суперкласу та збільшуватиме salary на 10000.
+The Manager class must be a subclass of the Employee class
+
+It is necessary to implement a constructor in the Manager class that will call the superclass constructor and increase the salary by 10000.
+
 ```ts
 class Employee {
-  // Заповніть модифікатори доступу
   name: string;
   department: string;
   salary: number;
@@ -44,29 +49,32 @@ class Employee {
   }
 }
 
-class Manager extends Employee {
-  // Реалізуйте конструктор та збільшіть salary на 10000
-}
+class Manager extends Employee {}
 ```
-# Завдання 3
-Ви створюєте гру, де є персонажі з різними ролями. Зараз ви працюєте над класом Wizard, який має реалізовувати два інтерфейси - ICharacter та ISpellCaster.
 
-Визначте інтерфейси ICharacter та ISpellCaster так, щоб вони відповідали вимогам класу Wizard. Інтерфейс ICharacter повинен включати властивості name і level, і навіть метод introduce і levelUp. Інтерфейс ISpellCaster повинен включати метод castSpell.
+# Task 3
+
+You are creating a game with characters with different roles.
+Now you are working on the Wizard class, which must implement two interfaces - ICharacter and ISpellCaster.
+
+Define the ICharacter and ISpellCaster interfaces so that they meet the requirements of the Wizard class.
+The ICharacter interface must include the name and level properties, and even the introduce and levelUp methods.
+The ISpellCaster interface must include the castSpell method.
+
 ```ts
-// реалізація класу Wizard
 class Wizard implements ICharacter, ISpellCaster {
   constructor(public name: string, public level: number) {
     if (this.level < 1) {
-      throw new Error('Level too low');
+      throw new Error("Level too low");
     }
   }
 
   introduce(phrase: string): void {
-    console.log(phrase + ', ' + this.name);
+    console.log(phrase + ", " + this.name);
   }
 
   castSpell(): void {
-    console.log('Casting a spell, behold my power!');
+    console.log("Casting a spell, behold my power!");
   }
 
   levelUp(): void {
@@ -75,27 +83,28 @@ class Wizard implements ICharacter, ISpellCaster {
   }
 }
 
-// тестування класу
-const wizard = new Wizard('Merlin', 15);
+const wizard = new Wizard("Merlin", 15);
 
-wizard.introduce('I am the mighty wizard');
+wizard.introduce("I am the mighty wizard");
 wizard.castSpell();
-wizard.levelUp();  // Level up! New level is 16
+wizard.levelUp(); // Level up! New level is 16
 ```
-# Завдання 4 *
-У цьому завдання вам належить реалізувати сценарій життя, де людина, ключ і будинок взаємодіють один з одним.
 
-Ключ (Key): Створіть клас Key. У нього має бути одна приватна властивість signature, яка генерується випадково при створенні об'єкта цього класу (наприклад Math.random()). Також цей клас повинен мати метод getSignature, який повертає значення властивості signature.
+# Task 4 \*
 
-Людина (Person): Створіть клас Person. Конструктор цього класу приймає об'єкт класу Key і зберігає їх у приватному властивості key. Клас Person повинен мати метод getKey, який повертає збережений ключ.
+In this task, you will have to realize a life scenario where a person, a key, and a house interact with each other.
 
-Дім (House): Створіть абстрактний клас House. Цей клас має дві властивості: door, яка може бути відкрита (true), або закрита (false), і key, яка зберігає об'єкт класу Key. У цьому класі також повинен бути метод comeIn, який додає об'єкт класу Person у масив tenants, якщо door відкрита. Ваш абстрактний клас House також повинен мати абстрактний метод OpenDoor, який приймає об'єкт класу Key.
+Key: Create a Key class. It should have one private property, signature, which is generated randomly when an object of this class is created (for example, Math.random()). Also, this class must have a getSignature method that returns the value of the signature property.
 
-Мій будинок (MyHouse): Створіть клас MyHouse, який успадковується від абстрактного класу House. Реалізуйте метод openDoor у цьому класі. Якщо ключ, переданий цьому методу, збігається з ключем, збереженим як key, то двері відчиняються.
+Person: Create a Person class. The constructor of this class accepts an object of the Key class and stores them in the private key property. The Person class must have a getKey method that returns the stored key.
 
-Після реалізації всіх класів створіть об'єкти для кожного класу та спробуйте відтворити сценарій, в якому людина приходить додому.
+House: Create an abstract class called House. This class has two properties: door, which can be open (true) or closed (false), and key, which stores an object of the Key class. This class must also have a comeIn method that adds an object of class Person to the tenants array if the door is open. Your abstract House class must also have an abstract OpenDoor method that accepts a Key class object.
 
-Наприклад, ось так:
+MyHouse class: Create a MyHouse class that inherits from the abstract House class. Implement the openDoor method in this class. If the key passed to this method matches the key stored as key, then the door opens.
+
+After implementing all the classes, create objects for each class and try to recreate the scenario in which a person comes home.
+
+For example, like this:
 
 ```ts
 const key = new Key();
